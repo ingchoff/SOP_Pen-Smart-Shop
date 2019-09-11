@@ -24,7 +24,7 @@ public class PenshopApplication {
         return text.replace("\n", "<br />\n");
     }
     @RequestMapping("/pens")
-    public Pens[] showAll() {
+    public ArrayList showAll() {
         return PensFactory.getAll();
     }
     @RequestMapping(value = "/pens/color/{color}", method = RequestMethod.GET)

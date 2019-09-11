@@ -3,40 +3,55 @@ package com.example.penshop;
 import java.util.ArrayList;
 
 public class PensFactory {
-    public static Pens[] totalPens = new Pens[]{
-            new Pens(1, Pens.colorPen.Blue, Pens.typePen.BallPoint, "Horse", 15.00),
-            new Pens(2, Pens.colorPen.Black, Pens.typePen.Marker, "Horse", 55.00),
-            new Pens(3, Pens.colorPen.Blue, Pens.typePen.Gel, "Pentel", 30.25),
-            new Pens(4, Pens.colorPen.Black, Pens.typePen.Gel, "Faber Castell", 20.75),
-            new Pens(5, Pens.colorPen.Blue, Pens.typePen.BallPoint, "G-Soft", 10.05),
-            new Pens(6, Pens.colorPen.Red, Pens.typePen.Stylus, "Pilot", 70.50),
-            new Pens(7, Pens.colorPen.Blue, Pens.typePen.BallPoint, "Faber Castell", 12.05),
-            new Pens(8, Pens.colorPen.Black, Pens.typePen.BallPoint, "G-Soft", 11.00),
-            new Pens(9, Pens.colorPen.Red, Pens.typePen.Highlighters, "Faber Castell", 60.00),
-            new Pens(10, Pens.colorPen.Red, Pens.typePen.Marker, "TOUCH", 100.00),
-            new Pens(11, Pens.colorPen.Blue, Pens.typePen.Rollerball, "Lancer", 14.75),
-            new Pens(12, Pens.colorPen.Black, Pens.typePen.Stylus, "Lancer", 32.00),
+    public static Horse[] totalHorse = new Horse[]{
+            new Horse("Red", "BallPoint", 14.00),
+            new Horse("Black", "Gel", 22.00),
+            new Horse("Blue", "Marker", 35.00),
+            new Horse("Black", "BallPoint", 12.50)
+    };
+    public static Gsoft[] totalG = new Gsoft[]{
+            new Gsoft("Red", "BallPoint", 11.00),
+            new Gsoft("Blue", "Rollerball", 20.00),
+            new Gsoft("Blue", "Gel", 25.00),
+            new Gsoft("Black", "Stylus", 112.50)
     };
 
-    public static Pens[] getAll() {
+    public static ArrayList getAll() {
+        var totalPens = new ArrayList<>();
+        for (Horse horse: totalHorse) {
+            totalPens.add((horse));
+        }
+        for (Gsoft gsoft: totalG) {
+            totalPens.add((gsoft));
+        }
         return totalPens;
     }
 
-    public static ArrayList<Pens> getByColor(String color) {
-        var result = new ArrayList<Pens>();
-        for (Pens pen: totalPens) {
-            if (pen.getColor().toString().toLowerCase().equals(color.toLowerCase())) {
-                result.add(pen);
+    public static ArrayList getByColor(String color) {
+        var result = new ArrayList<>();
+        for (Horse horse: totalHorse) {
+            if (horse.getColor().equalsIgnoreCase(color)) {
+                result.add(horse);
+            }
+        }
+        for (Gsoft gsoft: totalG) {
+            if (gsoft.getColor().equalsIgnoreCase(color)) {
+                result.add(gsoft);
             }
         }
         return result;
     }
 
-    public static ArrayList<Pens> getByType(String type) {
-        var result = new ArrayList<Pens>();
-        for (Pens pen: totalPens) {
-            if (pen.getType().toString().equalsIgnoreCase(type)) {
-                result.add(pen);
+    public static ArrayList getByType(String type) {
+        var result = new ArrayList<>();
+        for (Horse horse: totalHorse) {
+            if (horse.getType().equalsIgnoreCase(type)) {
+                result.add(horse);
+            }
+        }
+        for (Gsoft gsoft: totalG) {
+            if (gsoft.getType().equalsIgnoreCase(type)) {
+                result.add(gsoft);
             }
         }
         return result;
