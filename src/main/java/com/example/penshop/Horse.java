@@ -1,6 +1,8 @@
 package com.example.penshop;
 
-public class Horse implements Pens {
+import java.io.Serializable;
+
+public class Horse implements Pens, Serializable {
     private String band;
     private String color;
     private String type;

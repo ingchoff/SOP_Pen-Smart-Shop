@@ -1,5 +1,6 @@
 package com.example.penshop;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class PensFactory {
@@ -55,6 +56,15 @@ public class PensFactory {
             }
         }
         return result;
+    }
+
+    public static ArrayList getStock() throws IOException, ClassNotFoundException {
+        StockSingleton.getInstance().setTotalHorse(totalHorse);
+        StockSingleton.getInstance().setTotalG(totalG);
+        StockSingleton.getInstance().createFileStock("stock.txt");
+        Object txtStock = StockSingleton.getInstance().readFileStock("stock.txt");
+        System.out.print(txtStock);
+        return (ArrayList) txtStock;
     }
 
 }

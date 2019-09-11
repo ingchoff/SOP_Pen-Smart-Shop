@@ -1,6 +1,8 @@
 package com.example.penshop;
 
-public class Gsoft implements Pens {
+import java.io.Serializable;
+
+public class Gsoft implements Pens, Serializable {
     private String band;
     private String color;
     private String type;

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 @SpringBootApplication
@@ -28,12 +29,16 @@ public class PenshopApplication {
         return PensFactory.getAll();
     }
     @RequestMapping(value = "/pens/color/{color}", method = RequestMethod.GET)
-    public ArrayList<Pens> sortColor(@PathVariable("color") String color) {
+    public ArrayList sortColor(@PathVariable("color") String color) {
         return PensFactory.getByColor(color);
     }
     @RequestMapping(value = "/pens/type/{type}", method = RequestMethod.GET)
-    public ArrayList<Pens> sortType(@PathVariable("type") String type) {
+    public ArrayList sortType(@PathVariable("type") String type) {
         return PensFactory.getByType(type);
+    }
+    @RequestMapping(value = "/show-stock", method = RequestMethod.GET)
+    public ArrayList getStock() throws IOException, ClassNotFoundException {
+        return PensFactory.getStock();
     }
 
 }
